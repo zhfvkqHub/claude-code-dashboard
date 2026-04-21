@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card { width: 700px; padding: 24px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+  .swatch {
+    width: 96px; height: 96px; border-radius: 10px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 10px; box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .sw-name { font-family: var(--font-mono); font-size: 10px; color: rgba(28,25,23,0.65); letter-spacing: 0.05em; }
+  .sw-hex { font-family: var(--font-mono); font-size: 10px; color: rgba(28,25,23,0.55); }
+  .sw-dark .sw-name, .sw-dark .sw-hex { color: rgba(255,255,255,0.8); }
+  .role {
+    font-family: var(--font-mono); font-size: 9px; color: rgba(28,25,23,0.55);
+    text-transform: uppercase; letter-spacing: 0.12em;
+  }
+  .sw-dark .role { color: rgba(255,255,255,0.6); }
+  .eyebrow {
+    font-family: var(--font-mono); font-size: 10px; color: #78716c;
+    text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="eyebrow">Brand accent — amber</div>
+  <div class="row">
+    <div class="swatch" style="background:#fffbeb"><div class="role">bg</div><div><div class="sw-name">amber-50</div><div class="sw-hex">#FFFBEB</div></div></div>
+    <div class="swatch" style="background:#fef3c7"><div class="role">100</div><div><div class="sw-name">amber-100</div><div class="sw-hex">#FEF3C7</div></div></div>
+    <div class="swatch" style="background:#fcd34d"><div class="role">border</div><div><div class="sw-name">amber-300</div><div class="sw-hex">#FCD34D</div></div></div>
+    <div class="swatch" style="background:#fbbf24"><div class="role">dot</div><div><div class="sw-name">amber-400</div><div class="sw-hex">#FBBF24</div></div></div>
+    <div class="swatch sw-dark" style="background:#f59e0b"><div class="role">accent</div><div><div class="sw-name">amber-500</div><div class="sw-hex">#F59E0B</div></div></div>
+    <div class="swatch sw-dark" style="background:#d97706"><div class="role">hover</div><div><div class="sw-name">amber-600</div><div class="sw-hex">#D97706</div></div></div>
+    <div class="swatch sw-dark" style="background:#b45309"><div class="role">text</div><div><div class="sw-name">amber-700</div><div class="sw-hex">#B45309</div></div></div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card { width: 700px; padding: 16px 20px; box-sizing: border-box; font-family: var(--font-sans); display: flex; flex-direction: column; gap: 4px;}
+  .row {
+    display: flex; align-items: center; gap: 16px; padding: 14px 18px;
+    border-radius: 8px; border: 1px solid transparent; transition: all 150ms;
+  }
+  .row.hover { background: #fff; border-color: #e7e5e4; box-shadow: 0 1px 2px rgba(28,25,23,0.04); }
+  .row.important { border-left: 3px solid #fbbf24; padding-left: 15px; }
+  .cat { display: flex; align-items: center; gap: 8px; width: 110px; flex-shrink: 0; }
+  .cat .dot { width: 8px; height: 8px; border-radius: 999px; }
+  .cat .label { font-size: 13px; }
+  .main { flex: 1; min-width: 0; }
+  .main h3 { margin: 0; font-size: 15px; color: #1c1917; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hover .main h3 { color: #92400e; }
+  .main p { margin: 2px 0 0; font-size: 13px; color: #78716c; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .score { display: flex; gap: 2px; flex-shrink: 0; }
+  .score i { width: 6px; height: 6px; border-radius: 999px; background: #e7e5e4; }
+  .score i.on { background: #fbbf24; }
+  .date { font-family: var(--font-mono); font-size: 12px; color: #a8a29e; width: 60px; text-align: right; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .ver { font-family: var(--font-mono); font-size: 12px; color: #a8a29e; width: 72px; text-align: right; flex-shrink: 0; }
+  .arrow { color: #d6d3d1; flex-shrink: 0; }
+  .hover .arrow { color: #f59e0b; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row important hover">
+    <div class="cat"><span class="dot" style="background:#fbbf24"></span><span class="label" style="color:#b45309">핵심 기능</span></div>
+    <div class="main">
+      <h3>/resume 대형 세션 성능 대폭 개선</h3>
+      <p>40MB 이상 세션에서 최대 67% 빠른 /resume.</p>
+    </div>
+    <div class="score"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+    <div class="date">어제</div>
+    <div class="ver">v2.1.116</div>
+    <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+  <div class="row">
+    <div class="cat"><span class="dot" style="background:#38bdf8"></span><span class="label" style="color:#0369a1">통합/연동</span></div>
+    <div class="main">
+      <h3>MCP 서버 병렬 시작 최적화</h3>
+      <p>다수의 stdio MCP 서버 설정 시 시작 속도 개선.</p>
+    </div>
+    <div class="score"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <div class="date">어제</div>
+    <div class="ver">v2.1.116</div>
+    <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+  <div class="row">
+    <div class="cat"><span class="dot" style="background:#fb923c"></span><span class="label" style="color:#c2410c">개발자 경험</span></div>
+    <div class="main">
+      <h3>IDE 터미널 풀스크린 스크롤 개선</h3>
+      <p>VS Code, Cursor, Windsurf 터미널에서 부드러운 풀스크린 스크롤.</p>
+    </div>
+    <div class="score"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+    <div class="date">3일 전</div>
+    <div class="ver">v2.1.115</div>
+    <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+  </div>
+</div>
+</body>
+</html>

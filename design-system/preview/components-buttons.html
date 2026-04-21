@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card { width: 700px; padding: 24px; box-sizing: border-box; font-family: var(--font-sans); display: flex; flex-direction: column; gap: 14px;}
+  .label { font-family: var(--font-mono); font-size: 10px; color: #78716c; text-transform: uppercase; letter-spacing: 0.15em;}
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  button { font-family: inherit; font-size: 14px; border: 0; cursor: pointer; padding: 8px 14px; border-radius: 8px; transition: all 150ms; }
+  .b-primary { background: #f59e0b; color: #fff; font-weight: 500; }
+  .b-primary:hover { background: #d97706; }
+  .b-ghost { background: #fff; color: #57534e; border: 1px solid #d6d3d1; }
+  .b-ghost:hover { border-color: #a8a29e; color: #1c1917; }
+  .b-plain { background: transparent; color: #78716c; padding: 6px 12px; }
+  .b-plain:hover { color: #b45309; }
+  .seg { display: inline-flex; border: 1px solid #d6d3d1; border-radius: 8px; overflow: hidden; background: #fff; }
+  .seg button { border-radius: 0; padding: 8px 14px; background: transparent; color: #57534e; font-weight: 500; font-size: 13px; }
+  .seg button.active { background: #f59e0b; color: #fff; }
+  .seg button:not(.active):hover { background: #fafaf9; color: #1c1917; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div>
+    <div class="label" style="margin-bottom:8px;">Buttons</div>
+    <div class="row">
+      <button class="b-primary">공식 문서 보기</button>
+      <button class="b-ghost">필터</button>
+      <button class="b-plain">초기화</button>
+    </div>
+  </div>
+  <div>
+    <div class="label" style="margin-bottom:8px;">Segmented — sort mode</div>
+    <div class="row">
+      <div class="seg">
+        <button class="active">최신순</button>
+        <button>중요도</button>
+        <button>사용성</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

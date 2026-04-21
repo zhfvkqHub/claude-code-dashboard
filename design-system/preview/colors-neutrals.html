@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card {
+    width: 700px;
+    padding: 24px;
+    box-sizing: border-box;
+    font-family: var(--font-sans);
+  }
+  .row { display: flex; gap: 12px; align-items: stretch; flex-wrap: wrap; }
+  .swatch {
+    width: 96px; height: 96px; border-radius: 10px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 10px; box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.06);
+  }
+  .sw-label {
+    font-family: var(--font-mono); font-size: 10px;
+    color: rgba(28,25,23,0.75); letter-spacing: 0.05em;
+  }
+  .sw-hex {
+    font-family: var(--font-mono); font-size: 10px;
+    color: rgba(28,25,23,0.55);
+  }
+  .sw-dark .sw-label { color: rgba(255,255,255,0.9); }
+  .sw-dark .sw-hex { color: rgba(255,255,255,0.65); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div class="swatch sw-dark" style="background:#1c1917">
+      <div class="sw-label">stone-900</div><div class="sw-hex">#1C1917</div>
+    </div>
+    <div class="swatch sw-dark" style="background:#292524">
+      <div class="sw-label">stone-800</div><div class="sw-hex">#292524</div>
+    </div>
+    <div class="swatch sw-dark" style="background:#44403c">
+      <div class="sw-label">stone-700</div><div class="sw-hex">#44403C</div>
+    </div>
+    <div class="swatch sw-dark" style="background:#78716c">
+      <div class="sw-label">stone-500</div><div class="sw-hex">#78716C</div>
+    </div>
+    <div class="swatch" style="background:#a8a29e">
+      <div class="sw-label">stone-400</div><div class="sw-hex">#A8A29E</div>
+    </div>
+    <div class="swatch" style="background:#d6d3d1">
+      <div class="sw-label">stone-300</div><div class="sw-hex">#D6D3D1</div>
+    </div>
+    <div class="swatch" style="background:#e7e5e4">
+      <div class="sw-label">stone-200</div><div class="sw-hex">#E7E5E4</div>
+    </div>
+  </div>
+  <div class="row" style="margin-top:10px">
+    <div class="swatch" style="background:#f5f5f4">
+      <div class="sw-label">stone-100</div><div class="sw-hex">#F5F5F4</div>
+    </div>
+    <div class="swatch" style="background:#fafaf9; border-color:#e7e5e4">
+      <div class="sw-label">stone-50</div><div class="sw-hex">#FAFAF9</div>
+    </div>
+    <div class="swatch" style="background:#ffffff; border-color:#e7e5e4">
+      <div class="sw-label">white</div><div class="sw-hex">#FFFFFF</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
