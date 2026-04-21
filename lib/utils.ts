@@ -8,6 +8,11 @@ export const categoryColors: Record<
     text: string;
     dot: string;
     glow: string;
+    // light mode variants
+    accent: string;
+    bgLight: string;
+    borderLight: string;
+    textDark: string;
   }
 > = {
   core: {
@@ -16,6 +21,10 @@ export const categoryColors: Record<
     text: "text-amber-300",
     dot: "bg-amber-400",
     glow: "shadow-amber-500/20",
+    accent: "bg-amber-400",
+    bgLight: "bg-amber-50",
+    borderLight: "border-amber-300",
+    textDark: "text-amber-700",
   },
   productivity: {
     bg: "bg-emerald-950/40",
@@ -23,6 +32,10 @@ export const categoryColors: Record<
     text: "text-emerald-300",
     dot: "bg-emerald-400",
     glow: "shadow-emerald-500/20",
+    accent: "bg-emerald-400",
+    bgLight: "bg-emerald-50",
+    borderLight: "border-emerald-300",
+    textDark: "text-emerald-700",
   },
   integration: {
     bg: "bg-sky-950/40",
@@ -30,6 +43,10 @@ export const categoryColors: Record<
     text: "text-sky-300",
     dot: "bg-sky-400",
     glow: "shadow-sky-500/20",
+    accent: "bg-sky-400",
+    bgLight: "bg-sky-50",
+    borderLight: "border-sky-300",
+    textDark: "text-sky-700",
   },
   platform: {
     bg: "bg-violet-950/40",
@@ -37,6 +54,10 @@ export const categoryColors: Record<
     text: "text-violet-300",
     dot: "bg-violet-400",
     glow: "shadow-violet-500/20",
+    accent: "bg-violet-400",
+    bgLight: "bg-violet-50",
+    borderLight: "border-violet-300",
+    textDark: "text-violet-700",
   },
   security: {
     bg: "bg-rose-950/40",
@@ -44,6 +65,10 @@ export const categoryColors: Record<
     text: "text-rose-300",
     dot: "bg-rose-400",
     glow: "shadow-rose-500/20",
+    accent: "bg-rose-400",
+    bgLight: "bg-rose-50",
+    borderLight: "border-rose-300",
+    textDark: "text-rose-700",
   },
   dx: {
     bg: "bg-orange-950/40",
@@ -51,6 +76,10 @@ export const categoryColors: Record<
     text: "text-orange-300",
     dot: "bg-orange-400",
     glow: "shadow-orange-500/20",
+    accent: "bg-orange-400",
+    bgLight: "bg-orange-50",
+    borderLight: "border-orange-300",
+    textDark: "text-orange-700",
   },
 };
 

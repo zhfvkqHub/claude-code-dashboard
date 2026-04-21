@@ -1,9 +1,10 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { FeaturesData, CategoryId, SortMode } from "@/lib/types";
+import type { FeaturesData, CategoryId, SortMode, Feature } from "@/lib/types";
 import { categoryColors } from "@/lib/utils";
-import { FeatureCard } from "./FeatureCard";
+import { FeatureRow } from "./FeatureRow";
+import { FeatureModal } from "./FeatureModal";
 
 interface Props {
   data: FeaturesData;
@@ -16,6 +17,8 @@ export function Dashboard({ data }: Props) {
   );
   const [sortMode, setSortMode] = useState<SortMode>("date");
   const [minImportance, setMinImportance] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [showFilters, setShowFilters] = useState(false);
 
   const categoryMap = useMemo(
     () => Object.fromEntries(data.categories.map((c) => [c.id, c])),
@@ -71,82 +74,59 @@ export function Dashboard({ data }: Props) {
   const hasFilters =
     query !== "" || activeCategories.size > 0 || minImportance > 0;
 
+  const selectedFeature = selectedIndex !== null ? filtered[selectedIndex] : null;
+
   return (
     <div className="min-h-screen">
-      {/* Hero */}
-      <header className="relative border-b border-stone-900 grain">
-        <div className="marquee-stripe absolute top-0 left-0 right-0 h-1" />
-
-        <div className="max-w-7xl mx-auto px-6 pt-12 pb-10 md:pt-16 md:pb-12 relative">
-          <div className="flex items-center gap-3 mb-6 md:mb-8">
-            <span className="w-2 h-2 rounded-full bg-amber-400 pulse-glow" />
-            <span className="text-[11px] uppercase tracking-[0.25em] font-mono text-amber-500">
-              Live · 공식 문서 기준
-            </span>
-            <span className="text-[11px] font-mono text-stone-600 ml-auto hidden sm:block">
-              v{data.meta.currentVersion} · {data.meta.lastUpdated}
-            </span>
-          </div>
-
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[0.95] text-balance mb-4">
-            Claude Code
-            <br />
-            <span className="italic text-amber-400">Radar.</span>
-          </h1>
-
-          <p className="text-stone-400 text-base md:text-lg max-w-xl leading-relaxed text-pretty">
-            최신 기능과 업데이트를 한눈에. 공식 changelog 기준으로 중요도·사용성을
-            점수화하고 바로 문서로 이동할 수 있게 정리했어요.
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-6 text-xs font-mono text-stone-500">
-            <Stat label="큐레이션 기능" value={data.features.length} />
-            <Stat
-              label="핵심 기능"
-              value={
-                data.features.filter((f) => f.importance >= 4).length
-              }
-            />
-            <Stat label="카테고리" value={data.categories.length} />
+      {/* Header */}
+      <header className="border-b border-stone-200 bg-white">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-5">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <h1 className="text-xl sm:text-2xl font-semibold text-stone-900 tracking-tight">
+                Claude Code Radar
+              </h1>
+              <span className="text-sm text-stone-400 hidden sm:inline">
+                v{data.meta.currentVersion}
+              </span>
+            </div>
+            <div className="flex items-center gap-4 text-sm text-stone-500">
+              <span>{data.features.length}개 기능</span>
+              <span className="hidden sm:inline text-stone-300">·</span>
+              <span className="hidden sm:inline">핵심 {data.features.filter((f) => f.importance >= 4).length}개</span>
+            </div>
           </div>
         </div>
       </header>
 
       {/* Controls */}
-      <section className="sticky top-0 z-10 bg-stone-950/95 backdrop-blur-md border-b border-stone-900">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center">
+      <section className="sticky top-0 z-10 bg-stone-50/95 backdrop-blur-md border-b border-stone-200">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-4">
+          <div className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
             {/* search */}
             <div className="relative flex-1 max-w-md">
               <svg
-                className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-500"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
                 fill="none"
               >
-                <circle cx="6" cy="6" r="4.5" stroke="currentColor" />
-                <path
-                  d="M10 10L13 13"
-                  stroke="currentColor"
-                  strokeLinecap="round"
-                />
+                <circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M11 11L14.5 14.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
               <input
                 type="search"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="기능, 버전, 태그 검색…"
-                className="w-full bg-stone-900/60 border border-stone-800 rounded-sm pl-9 pr-3 py-2 text-sm font-mono text-stone-200 placeholder-stone-600 focus:outline-none focus:border-amber-700 focus:ring-1 focus:ring-amber-700/40 transition"
+                className="w-full bg-white border border-stone-300 rounded-lg pl-10 pr-4 py-2.5 text-base text-stone-800 placeholder-stone-400 focus:outline-none focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 transition"
               />
             </div>
 
             {/* sort */}
             <div className="flex items-center gap-2">
-              <span className="text-[10px] uppercase tracking-wider font-mono text-stone-500">
-                정렬
-              </span>
-              <div className="flex border border-stone-800 rounded-sm overflow-hidden">
+              <div className="flex border border-stone-300 rounded-lg overflow-hidden bg-white">
                 {(
                   [
                     ["date", "최신순"],
@@ -157,10 +137,10 @@ export function Dashboard({ data }: Props) {
                   <button
                     key={mode}
                     onClick={() => setSortMode(mode)}
-                    className={`px-3 py-1.5 text-xs font-mono transition ${
+                    className={`px-3 py-2 text-sm font-medium transition ${
                       sortMode === mode
-                        ? "bg-amber-500 text-stone-950"
-                        : "bg-stone-900/60 text-stone-400 hover:text-stone-200"
+                        ? "bg-amber-500 text-white"
+                        : "text-stone-600 hover:text-stone-900 hover:bg-stone-50"
                     }`}
                   >
                     {label}
@@ -169,141 +149,145 @@ export function Dashboard({ data }: Props) {
               </div>
             </div>
 
-            {/* importance filter */}
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] uppercase tracking-wider font-mono text-stone-500">
-                최소 중요도
+            {/* filter toggle */}
+            <button
+              onClick={() => setShowFilters((v) => !v)}
+              className={`flex items-center gap-2 px-3 py-2 text-sm rounded-lg border transition ${
+                showFilters || hasFilters
+                  ? "border-amber-300 bg-amber-50 text-amber-700"
+                  : "border-stone-300 bg-white text-stone-600 hover:border-stone-400"
+              }`}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path d="M2 4H14M4 8H12M6 12H10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+              필터
+              {hasFilters && (
+                <span className="w-2 h-2 rounded-full bg-amber-500" />
+              )}
+            </button>
+
+            {/* result count + clear */}
+            <div className="flex items-center gap-3 sm:ml-auto">
+              <span className="text-sm text-stone-500">
+                {filtered.length}개 결과
               </span>
-              <div className="flex gap-0.5">
-                {[0, 3, 4, 5].map((v) => (
-                  <button
-                    key={v}
-                    onClick={() => setMinImportance(v)}
-                    className={`px-2.5 py-1.5 text-xs font-mono transition rounded-sm ${
-                      minImportance === v
-                        ? "bg-stone-100 text-stone-950"
-                        : "bg-stone-900/60 text-stone-500 hover:text-stone-200 border border-stone-800"
-                    }`}
-                  >
-                    {v === 0 ? "모두" : `${v}+`}
-                  </button>
-                ))}
+              {hasFilters && (
+                <button
+                  onClick={clearFilters}
+                  className="text-sm text-stone-500 hover:text-amber-600 transition"
+                >
+                  초기화
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* expandable filters */}
+          {showFilters && (
+            <div className="mt-4 pt-4 border-t border-stone-200 flex flex-col gap-4">
+              {/* categories */}
+              <div className="flex flex-wrap gap-2">
+                {data.categories.map((cat) => {
+                  const isActive = activeCategories.has(cat.id);
+                  const colors = categoryColors[cat.id];
+                  const count = data.features.filter((f) => f.category === cat.id).length;
+                  return (
+                    <button
+                      key={cat.id}
+                      onClick={() => toggleCategory(cat.id)}
+                      className={`inline-flex items-center gap-2 px-3 py-2 text-sm rounded-lg border transition ${
+                        isActive
+                          ? `${colors.bgLight} ${colors.borderLight} ${colors.textDark} font-medium`
+                          : "bg-white border-stone-200 text-stone-600 hover:border-stone-300"
+                      }`}
+                    >
+                      <span className={`w-2 h-2 rounded-full ${colors.dot}`} />
+                      {cat.label}
+                      <span className="text-stone-400 tabular-nums text-xs">{count}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* importance filter */}
+              <div className="flex items-center gap-3">
+                <span className="text-sm text-stone-600">최소 중요도</span>
+                <div className="flex gap-1">
+                  {[0, 3, 4, 5].map((v) => (
+                    <button
+                      key={v}
+                      onClick={() => setMinImportance(v)}
+                      className={`px-3 py-1.5 text-sm rounded-md transition ${
+                        minImportance === v
+                          ? "bg-stone-800 text-white"
+                          : "bg-white text-stone-600 border border-stone-200 hover:border-stone-300"
+                      }`}
+                    >
+                      {v === 0 ? "모두" : `${v}+`}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-
-            {hasFilters && (
-              <button
-                onClick={clearFilters}
-                className="text-[11px] font-mono text-stone-500 hover:text-amber-400 transition ml-auto"
-              >
-                필터 초기화 ✕
-              </button>
-            )}
-          </div>
-
-          {/* category pills */}
-          <div className="flex flex-wrap gap-2 mt-4">
-            {data.categories.map((cat) => {
-              const isActive = activeCategories.has(cat.id);
-              const colors = categoryColors[cat.id];
-              const count = data.features.filter(
-                (f) => f.category === cat.id,
-              ).length;
-              return (
-                <button
-                  key={cat.id}
-                  onClick={() => toggleCategory(cat.id)}
-                  className={`group inline-flex items-center gap-2 px-3 py-1.5 text-xs font-mono rounded-full border transition ${
-                    isActive
-                      ? `${colors.bg} ${colors.border} ${colors.text}`
-                      : "bg-stone-900/40 border-stone-800 text-stone-500 hover:text-stone-300"
-                  }`}
-                >
-                  <span
-                    className={`w-1.5 h-1.5 rounded-full ${colors.dot} ${
-                      isActive ? "" : "opacity-40"
-                    }`}
-                  />
-                  {cat.label}
-                  <span className="text-stone-600 tabular-nums">{count}</span>
-                </button>
-              );
-            })}
-          </div>
+          )}
         </div>
       </section>
 
-      {/* Grid */}
-      <main className="max-w-7xl mx-auto px-6 py-10">
+      {/* List */}
+      <main className="max-w-5xl mx-auto px-5 sm:px-8 py-6">
         {filtered.length === 0 ? (
           <div className="text-center py-20">
-            <p className="font-display text-3xl text-stone-400 mb-2">
+            <p className="font-display text-2xl text-stone-400 mb-2">
               결과 없음
             </p>
-            <p className="text-sm text-stone-500 font-mono">
-              필터를 바꿔보세요.
-            </p>
+            <p className="text-sm text-stone-500">필터를 조정해보세요.</p>
           </div>
         ) : (
-          <>
-            <div className="flex items-baseline justify-between mb-6">
-              <h2 className="font-display text-2xl text-stone-300">
-                {filtered.length}개 기능
-                <span className="text-stone-600 text-sm font-mono ml-3">
-                  / {data.features.length}
-                </span>
-              </h2>
-              <p className="text-[11px] font-mono text-stone-600">
-                {sortMode === "date" && "최신 업데이트 순"}
-                {sortMode === "importance" && "중요도 높은 순"}
-                {sortMode === "usability" && "사용성 높은 순"}
-              </p>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {filtered.map((feature, i) => (
-                <FeatureCard
-                  key={feature.id}
-                  feature={feature}
-                  category={categoryMap[feature.category]!}
-                  index={i}
-                />
-              ))}
-            </div>
-          </>
+          <div className="flex flex-col gap-1">
+            {filtered.map((feature, i) => (
+              <FeatureRow
+                key={feature.id}
+                feature={feature}
+                category={categoryMap[feature.category]!}
+                onClick={() => setSelectedIndex(i)}
+              />
+            ))}
+          </div>
         )}
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-stone-900 mt-20">
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row gap-4 items-start md:items-center justify-between text-xs font-mono text-stone-500">
+      <footer className="border-t border-stone-200 mt-10">
+        <div className="max-w-5xl mx-auto px-5 sm:px-8 py-8 flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between text-sm text-stone-500">
           <div>
             데이터 출처:{" "}
             <a
               href={data.meta.source}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-amber-500 hover:text-amber-300 underline underline-offset-2"
+              className="text-amber-700 hover:text-amber-900 underline underline-offset-2"
             >
               Claude Code 공식 Changelog
             </a>
           </div>
-          <div className="text-stone-600">
+          <div className="text-stone-400">
             마지막 갱신 · {data.meta.lastUpdated}
           </div>
         </div>
       </footer>
+
+      {/* Modal */}
+      {selectedFeature && selectedIndex !== null && (
+        <FeatureModal
+          feature={selectedFeature}
+          category={categoryMap[selectedFeature.category]!}
+          onClose={() => setSelectedIndex(null)}
+          onPrev={selectedIndex > 0 ? () => setSelectedIndex(selectedIndex - 1) : null}
+          onNext={selectedIndex < filtered.length - 1 ? () => setSelectedIndex(selectedIndex + 1) : null}
+        />
+      )}
     </div>
   );
 }
 
-function Stat({ label, value }: { label: string; value: number }) {
-  return (
-    <div className="flex items-baseline gap-2">
-      <span className="font-display text-2xl text-stone-200 tabular-nums">
-        {value}
-      </span>
-      <span className="uppercase tracking-wider text-stone-500">{label}</span>
-    </div>
-  );
-}
