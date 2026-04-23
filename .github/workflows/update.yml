@@ -6,12 +6,14 @@ on:
     - cron: "0 0 * * *"
   workflow_dispatch: # 수동 실행도 가능
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   update:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: write
     steps:
       - uses: actions/checkout@v4
 
@@ -22,15 +24,14 @@ jobs:
       - name: Fetch latest changelog
         run: node scripts/fetch-changelog.mjs
 
-      - name: Create Pull Request if changed
-        uses: peter-evans/create-pull-request@v6
-        with:
-          commit-message: "chore: update claude code changelog metadata"
-          title: "🤖 Changelog 자동 업데이트"
-          body: |
-            공식 Claude Code changelog의 최신 버전 정보를 가져왔습니다.
-
-            - 공식 문서: https://code.claude.com/docs/en/changelog
-            - 새 기능이 추가되었다면 `data/features.json`의 `features` 배열에 수동으로 큐레이션해주세요.
-          branch: chore/update-changelog
-          delete-branch: true
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/features.json
+          if git diff --cached --quiet; then
+            echo "변경사항 없음, 스킵"
+          else
+            git commit -m "chore: update claude code changelog metadata"
+            git push
+          fi
