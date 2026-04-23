@@ -1,0 +1,201 @@
+/* ============================================================
+   Claude Code Radar — Colors & Type
+   Editorial light theme, amber accent, stone neutrals.
+   Fraunces (display) + Inter Tight (body) + JetBrains Mono (mono)
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400..700&display=swap");
+
+:root {
+  /* ---------- Font families ----------
+     Head + body share one refined, low-contrast Korean sans.
+     Mono stays JetBrains Mono for version/date/scores/tags. */
+  --font-display: "IBM Plex Sans KR", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans:    "IBM Plex Sans KR", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono:    "JetBrains Mono", "SF Mono", Menlo, monospace;
+
+  /* ---------- Neutrals (Stone scale) ---------- */
+  --stone-50:  #fafaf9;
+  --stone-100: #f5f5f4;
+  --stone-200: #e7e5e4;
+  --stone-300: #d6d3d1;
+  --stone-400: #a8a29e;
+  --stone-500: #78716c;
+  --stone-600: #57534e;
+  --stone-700: #44403c;
+  --stone-800: #292524;
+  --stone-900: #1c1917;
+
+  /* ---------- Brand accent (Amber) ---------- */
+  --amber-50:  #fffbeb;
+  --amber-100: #fef3c7;
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+  --amber-600: #d97706;
+  --amber-700: #b45309;
+  --amber-800: #92400e;
+  --amber-900: #78350f;
+
+  /* ---------- Category semantic colors ---------- */
+  /* core — amber */
+  --cat-core-dot: #fbbf24;
+  --cat-core-bg:  #fffbeb;
+  --cat-core-border: #fcd34d;
+  --cat-core-text: #b45309;
+
+  /* productivity — emerald */
+  --cat-productivity-dot: #34d399;
+  --cat-productivity-bg:  #ecfdf5;
+  --cat-productivity-border: #6ee7b7;
+  --cat-productivity-text: #047857;
+
+  /* integration — sky */
+  --cat-integration-dot: #38bdf8;
+  --cat-integration-bg:  #f0f9ff;
+  --cat-integration-border: #7dd3fc;
+  --cat-integration-text: #0369a1;
+
+  /* platform — violet */
+  --cat-platform-dot: #a78bfa;
+  --cat-platform-bg:  #f5f3ff;
+  --cat-platform-border: #c4b5fd;
+  --cat-platform-text: #6d28d9;
+
+  /* security — rose */
+  --cat-security-dot: #fb7185;
+  --cat-security-bg:  #fff1f2;
+  --cat-security-border: #fda4af;
+  --cat-security-text: #be123c;
+
+  /* dx — orange */
+  --cat-dx-dot: #fb923c;
+  --cat-dx-bg:  #fff7ed;
+  --cat-dx-border: #fdba74;
+  --cat-dx-text: #c2410c;
+
+  /* ---------- Semantic foreground / background ---------- */
+  --bg-page:    var(--stone-50);
+  --bg-surface: #ffffff;
+  --bg-sunken:  var(--stone-100);
+  --bg-overlay: rgba(28, 25, 23, 0.4);
+
+  --fg-1: var(--stone-900);   /* headings */
+  --fg-2: var(--stone-700);   /* body */
+  --fg-3: var(--stone-500);   /* meta, muted */
+  --fg-4: var(--stone-400);   /* disabled, tertiary */
+
+  --border-hair:    var(--stone-200);
+  --border-default: var(--stone-300);
+  --border-strong:  var(--stone-400);
+
+  --accent:        var(--amber-500);
+  --accent-hover:  var(--amber-600);
+  --accent-bg:     var(--amber-50);
+  --accent-border: var(--amber-300);
+  --accent-text:   var(--amber-700);
+
+  /* ---------- Radii ---------- */
+  --radius-xs: 4px;    /* inline chips, mono tags */
+  --radius-sm: 6px;    /* small buttons, pills */
+  --radius-md: 8px;    /* inputs, cards */
+  --radius-lg: 12px;   /* modals */
+  --radius-full: 9999px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-hair:   0 0 0 1px var(--border-hair);
+  --shadow-sm:     0 1px 2px rgba(28, 25, 23, 0.04);
+  --shadow-md:     0 4px 12px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
+  --shadow-modal:  0 24px 48px -12px rgba(28, 25, 23, 0.25);
+  --shadow-accent: 0 0 0 3px rgba(245, 158, 11, 0.2);
+
+  /* ---------- Spacing scale (4px base) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast: 120ms;
+  --dur-med:  200ms;
+  --dur-slow: 250ms;
+}
+
+/* ============================================================
+   Base type
+   ============================================================ */
+html {
+  background: var(--bg-page);
+  color: var(--fg-1);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection { background: var(--amber-500); color: var(--stone-900); }
+
+/* ---------- Display / editorial ---------- */
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.font-mono { font-family: var(--font-mono); }
+
+/* ---------- Semantic type scale ---------- */
+.t-display {            /* hero, section headers — IBM Plex Sans KR 500 */
+  font-family: var(--font-display);
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 500;
+  color: var(--fg-1);
+}
+
+.t-h1 {
+  font-size: 32px; line-height: 1.1; letter-spacing: -0.02em;
+  font-weight: 600; color: var(--fg-1);
+}
+.t-h2 {
+  font-size: 24px; line-height: 1.15; letter-spacing: -0.015em;
+  font-weight: 600; color: var(--fg-1);
+}
+.t-h3 {  /* modal title */
+  font-size: 20px; line-height: 1.2; letter-spacing: -0.01em;
+  font-weight: 600; color: var(--fg-1);
+}
+.t-title {   /* row title, card title */
+  font-size: 16px; line-height: 1.35; font-weight: 500; color: var(--fg-1);
+}
+.t-body {
+  font-size: 15px; line-height: 1.55; color: var(--fg-2);
+}
+.t-summary {   /* row summary, one-line */
+  font-size: 14px; line-height: 1.45; color: var(--fg-3);
+}
+.t-caption {
+  font-size: 12px; line-height: 1.4; color: var(--fg-3);
+}
+.t-micro {    /* eyebrow, score labels */
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: var(--fg-3);
+}
+.t-mono {
+  font-family: var(--font-mono);
+  font-size: 12px; color: var(--fg-3);
+  font-variant-numeric: tabular-nums;
+}
+code, kbd, samp, pre {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}

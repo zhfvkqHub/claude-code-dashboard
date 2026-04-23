@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card { width: 700px; padding: 24px; box-sizing: border-box; font-family: var(--font-sans); display: flex; flex-direction: column; gap: 14px; }
+  .label { font-family: var(--font-mono); font-size: 10px; color: #78716c; text-transform: uppercase; letter-spacing: 0.15em; }
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: center; }
+  .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 14px 8px; background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; }
+  .icon-cell svg { color: #44403c; }
+  .icon-name { font-family: var(--font-mono); font-size: 10px; color: #78716c; }
+  .note { font-size: 12px; color: #78716c; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">Iconography — inline line SVGs, 1.5px stroke, currentColor</div>
+  <div class="grid">
+    <div class="icon-cell">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11L14.5 14.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div class="icon-name">search</div>
+    </div>
+    <div class="icon-cell">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M2 4H14M4 8H12M6 12H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div class="icon-name">filter</div>
+    </div>
+    <div class="icon-cell">
+      <svg width="20" height="20" viewBox="0 0 12 12" fill="none"><path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div class="icon-name">external</div>
+    </div>
+    <div class="icon-cell">
+      <svg width="20" height="20" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      <div class="icon-name">chevron</div>
+    </div>
+    <div class="icon-cell">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <div class="icon-name">close</div>
+    </div>
+  </div>
+  <div class="note">Substitute via <strong style="font-family:var(--font-mono);font-weight:500;">lucide.dev</strong> for any new icon — matches 1.5px stroke + currentColor. No emoji.</div>
+</div>
+</body>
+</html>

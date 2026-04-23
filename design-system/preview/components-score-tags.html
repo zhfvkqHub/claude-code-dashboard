@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card { width: 700px; padding: 24px; box-sizing: border-box; font-family: var(--font-sans); display: flex; flex-direction: column; gap: 18px; }
+  .label { font-family: var(--font-mono); font-size: 10px; color: #78716c; text-transform: uppercase; letter-spacing: 0.15em; }
+  .score-block { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; background:#fff; border:1px solid #e7e5e4; border-radius: 10px; padding: 16px 20px; }
+  .score-block .sub-label { display: flex; justify-content: space-between; margin-bottom: 8px; font-size: 13px; color: #57534e; }
+  .score-block .sub-label strong { font-family: var(--font-mono); color: #1c1917; font-weight: 500; }
+  .bars { display: flex; gap: 4px; height: 8px; }
+  .bars i { flex: 1; border-radius: 999px; background: #e7e5e4; }
+  .bars.amber i.on { background: #fbbf24; }
+  .bars.emerald i.on { background: #34d399; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-family: var(--font-mono); font-size: 12px; color: #57534e; background: #f5f5f4; padding: 3px 10px; border-radius: 6px; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div>
+    <div class="label" style="margin-bottom:10px;">Score bars — importance / usability</div>
+    <div class="score-block">
+      <div>
+        <div class="sub-label"><span>중요도</span><strong>4/5</strong></div>
+        <div class="bars amber"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+      </div>
+      <div>
+        <div class="sub-label"><span>사용성</span><strong>5/5</strong></div>
+        <div class="bars emerald"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="label" style="margin-bottom:10px;">Tag chips — mono, subdued</div>
+    <div class="tags">
+      <span class="tag">resume</span>
+      <span class="tag">performance</span>
+      <span class="tag">session</span>
+      <span class="tag">mcp</span>
+      <span class="tag">plugin</span>
+      <span class="tag">vscode</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

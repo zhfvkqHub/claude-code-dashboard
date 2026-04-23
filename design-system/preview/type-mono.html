@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card { width: 700px; padding: 28px; box-sizing: border-box; font-family: var(--font-sans); }
+  .row { display: flex; align-items: baseline; gap: 24px; padding: 10px 0; border-bottom: 1px dashed #e7e5e4; }
+  .row:last-child { border-bottom: 0; }
+  .meta { width: 170px; flex-shrink: 0; font-family: var(--font-mono); font-size: 11px; color: #a8a29e; letter-spacing: 0.04em; }
+  .meta strong { color: #78716c; font-weight: 500; }
+  .chip { display: inline-block; font-family: var(--font-mono); font-size: 11px; color: #57534e; background: #f5f5f4; padding: 2px 8px; border-radius: 4px; margin-right:6px;}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="row">
+    <div class="meta"><strong>version</strong> · tabular-nums</div>
+    <div class="font-mono" style="font-size:13px; color:#57534e; font-variant-numeric:tabular-nums;">v2.1.116 · v2.1.110 · v2.0.28</div>
+  </div>
+  <div class="row">
+    <div class="meta"><strong>relative date</strong></div>
+    <div class="font-mono" style="font-size:12px; color:#a8a29e; font-variant-numeric:tabular-nums;">오늘 · 어제 · 3일 전 · 2주 전 · 1개월 전</div>
+  </div>
+  <div class="row">
+    <div class="meta"><strong>score readout</strong></div>
+    <div class="font-mono" style="font-size:12px; color:#292524;">4/5 · 5/5 · 3/5</div>
+  </div>
+  <div class="row">
+    <div class="meta"><strong>tag chips</strong></div>
+    <div>
+      <span class="chip">resume</span><span class="chip">performance</span><span class="chip">mcp</span><span class="chip">vscode</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="meta"><strong>identifiers / commands</strong></div>
+    <div class="font-mono" style="font-size:13px; color:#44403c;">/resume · /branch · /reload-plugins</div>
+  </div>
+</div>
+</body>
+</html>

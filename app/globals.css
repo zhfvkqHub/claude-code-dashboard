@@ -1,14 +1,79 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
-  --font-sans: "Inter Tight", "Inter", -apple-system, sans-serif;
-  --font-mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  --font-display: "IBM Plex Sans KR", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-sans:    "IBM Plex Sans KR", -apple-system, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono:    "JetBrains Mono", "SF Mono", Menlo, monospace;
 }
 
 @layer base {
   :root {
     color-scheme: light;
+
+    /* Neutrals */
+    --stone-50:  #fafaf9;
+    --stone-100: #f5f5f4;
+    --stone-200: #e7e5e4;
+    --stone-300: #d6d3d1;
+    --stone-400: #a8a29e;
+    --stone-500: #78716c;
+    --stone-600: #57534e;
+    --stone-700: #44403c;
+    --stone-800: #292524;
+    --stone-900: #1c1917;
+
+    /* Amber accent */
+    --amber-50:  #fffbeb;
+    --amber-100: #fef3c7;
+    --amber-300: #fcd34d;
+    --amber-400: #fbbf24;
+    --amber-500: #f59e0b;
+    --amber-600: #d97706;
+    --amber-700: #b45309;
+    --amber-800: #92400e;
+    --amber-900: #78350f;
+
+    /* Category colors */
+    --cat-core-dot: #fbbf24;       --cat-core-bg: #fffbeb;        --cat-core-border: #fcd34d;  --cat-core-text: #b45309;
+    --cat-productivity-dot: #34d399; --cat-productivity-bg: #ecfdf5; --cat-productivity-border: #6ee7b7; --cat-productivity-text: #047857;
+    --cat-integration-dot: #38bdf8;  --cat-integration-bg: #f0f9ff;  --cat-integration-border: #7dd3fc;  --cat-integration-text: #0369a1;
+    --cat-platform-dot: #a78bfa;    --cat-platform-bg: #f5f3ff;    --cat-platform-border: #c4b5fd;    --cat-platform-text: #6d28d9;
+    --cat-security-dot: #fb7185;    --cat-security-bg: #fff1f2;    --cat-security-border: #fda4af;    --cat-security-text: #be123c;
+    --cat-dx-dot: #fb923c;          --cat-dx-bg: #fff7ed;          --cat-dx-border: #fdba74;          --cat-dx-text: #c2410c;
+
+    /* Semantic */
+    --bg-page:    var(--stone-50);
+    --bg-surface: #ffffff;
+    --bg-sunken:  var(--stone-100);
+    --fg-1: var(--stone-900);
+    --fg-2: var(--stone-700);
+    --fg-3: var(--stone-500);
+    --fg-4: var(--stone-400);
+    --border-hair:    var(--stone-200);
+    --border-default: var(--stone-300);
+    --accent:        var(--amber-500);
+    --accent-hover:  var(--amber-600);
+    --accent-bg:     var(--amber-50);
+    --accent-text:   var(--amber-700);
+
+    /* Radii */
+    --radius-xs: 4px;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 9999px;
+
+    /* Shadows */
+    --shadow-sm:    0 1px 2px rgba(28, 25, 23, 0.04);
+    --shadow-md:    0 4px 12px rgba(28, 25, 23, 0.06), 0 1px 2px rgba(28, 25, 23, 0.04);
+    --shadow-modal: 0 24px 48px -12px rgba(28, 25, 23, 0.25);
+
+    /* Motion */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur-fast: 120ms;
+    --dur-med:  200ms;
+    --dur-slow: 250ms;
   }
 
   html {
@@ -16,6 +81,8 @@
     color: #1c1917;
     font-family: var(--font-sans);
     font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
@@ -46,8 +113,8 @@
 @layer utilities {
   .font-display {
     font-family: var(--font-display);
-    font-variation-settings: "opsz" 144, "SOFT" 50, "WONK" 0;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   .font-mono {

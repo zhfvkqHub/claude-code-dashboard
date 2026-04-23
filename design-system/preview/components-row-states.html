@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #fafaf9; }
+  .card { width: 700px; padding: 24px; box-sizing: border-box; font-family: var(--font-sans); display: flex; flex-direction: column; gap: 18px; }
+  .label { font-family: var(--font-mono); font-size: 10px; color: #78716c; text-transform: uppercase; letter-spacing: 0.15em; }
+  .demo { display: flex; gap: 18px; }
+  .state { flex: 1; background: #fff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 14px; }
+  .state .name { font-family: var(--font-mono); font-size: 10px; color: #a8a29e; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .row {
+    display: flex; align-items: center; gap: 12px; padding: 10px 14px;
+    border-radius: 6px; border: 1px solid transparent; font-size: 14px;
+  }
+  .row.idle { background: transparent; color: #1c1917; }
+  .row.hover { background: #fff; border-color: #e7e5e4; box-shadow: 0 1px 2px rgba(28,25,23,0.04); color: #92400e; }
+  .row.important { background: #fff; border-color: #e7e5e4; border-left: 3px solid #fbbf24; padding-left: 11px; }
+  .dot { width: 8px; height: 8px; border-radius: 999px; background: #fbbf24; }
+  .arrow { margin-left: auto; color: #d6d3d1; }
+  .hover .arrow { color: #f59e0b; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="label">Row states — idle · hover · importance ≥ 4</div>
+  <div class="demo">
+    <div class="state">
+      <div class="name">idle</div>
+      <div class="row idle"><span class="dot"></span>기능 이름<svg class="arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="state">
+      <div class="name">hover</div>
+      <div class="row hover"><span class="dot"></span>기능 이름<svg class="arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+    <div class="state">
+      <div class="name">important</div>
+      <div class="row important"><span class="dot"></span>기능 이름<svg class="arrow" width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M6 4L10 8L6 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -83,10 +83,21 @@ export function Dashboard({ data }: Props) {
         <div className="max-w-5xl mx-auto px-5 sm:px-8 py-5">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
+              <div
+                className="w-8 h-8 rounded-md flex items-center justify-center shrink-0"
+                style={{ background: "#f59e0b" }}
+              >
+                <span
+                  className="font-mono font-bold text-stone-900"
+                  style={{ fontSize: 11, letterSpacing: "0.5px" }}
+                >
+                  CCR
+                </span>
+              </div>
               <h1 className="text-xl sm:text-2xl font-semibold text-stone-900 tracking-tight">
                 Claude Code Radar
               </h1>
-              <span className="text-sm text-stone-400 hidden sm:inline">
+              <span className="text-sm text-stone-400 hidden sm:inline font-mono">
                 v{data.meta.currentVersion}
               </span>
             </div>
