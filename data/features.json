@@ -1,8 +1,8 @@
 {
   "meta": {
     "source": "https://code.claude.com/docs/en/changelog",
-    "lastUpdated": "2026-04-21",
-    "currentVersion": "2.1.116"
+    "lastUpdated": "2026-04-24",
+    "currentVersion": "2.1.119"
   },
   "categories": [
     {
@@ -47,7 +47,11 @@
       "version": "2.1.116",
       "importance": 4,
       "usability": 4,
-      "tags": ["resume", "performance", "session"],
+      "tags": [
+        "resume",
+        "performance",
+        "session"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -60,7 +64,11 @@
       "version": "2.1.116",
       "importance": 3,
       "usability": 4,
-      "tags": ["mcp", "performance", "plugin"],
+      "tags": [
+        "mcp",
+        "performance",
+        "plugin"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -73,7 +81,12 @@
       "version": "2.1.116",
       "importance": 3,
       "usability": 4,
-      "tags": ["terminal", "vscode", "scroll", "ux"],
+      "tags": [
+        "terminal",
+        "vscode",
+        "scroll",
+        "ux"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -86,7 +99,11 @@
       "version": "2.1.116",
       "importance": 2,
       "usability": 3,
-      "tags": ["ux", "spinner", "thinking"],
+      "tags": [
+        "ux",
+        "spinner",
+        "thinking"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -99,7 +116,11 @@
       "version": "2.1.116",
       "importance": 4,
       "usability": 3,
-      "tags": ["sandbox", "security", "safety"],
+      "tags": [
+        "sandbox",
+        "security",
+        "safety"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -112,7 +133,11 @@
       "version": "2.1.116",
       "importance": 2,
       "usability": 4,
-      "tags": ["config", "search", "ux"],
+      "tags": [
+        "config",
+        "search",
+        "ux"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -125,7 +150,12 @@
       "version": "2.1.116",
       "importance": 3,
       "usability": 3,
-      "tags": ["github", "rate-limit", "bash", "agent"],
+      "tags": [
+        "github",
+        "rate-limit",
+        "bash",
+        "agent"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -138,7 +168,12 @@
       "version": "2.1.116",
       "importance": 3,
       "usability": 4,
-      "tags": ["keyboard", "terminal", "kitty", "bugfix"],
+      "tags": [
+        "keyboard",
+        "terminal",
+        "kitty",
+        "bugfix"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -151,7 +186,11 @@
       "version": "2.1.116",
       "importance": 3,
       "usability": 3,
-      "tags": ["agent", "hooks", "frontmatter"],
+      "tags": [
+        "agent",
+        "hooks",
+        "frontmatter"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
@@ -164,7 +203,12 @@
       "version": "2.1.116",
       "importance": 2,
       "usability": 3,
-      "tags": ["i18n", "unicode", "terminal", "bugfix"],
+      "tags": [
+        "i18n",
+        "unicode",
+        "terminal",
+        "bugfix"
+      ],
       "docUrl": "https://code.claude.com/docs/en/changelog#2-1-116"
     },
     {
